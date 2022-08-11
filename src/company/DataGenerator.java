@@ -42,4 +42,17 @@ public class DataGenerator {
         StaticConstants.CATEGORY_LIST.add(category2);
         StaticConstants.CATEGORY_LIST.add(category3);
     }
+
+    public static void createProduct(){
+        Product product1 = new Product(UUID.randomUUID(),"iPhone",1450.33,8,8,StaticConstants.CATEGORY_LIST.get(0).getId());
+        Product product2 = new Product(UUID.randomUUID(),"XBOX",1230.33,5,9,StaticConstants.CATEGORY_LIST.get(0).getId());
+        Product product3 = new Product(UUID.randomUUID(),"Table",123.33,2,5,StaticConstants.CATEGORY_LIST.get(0).getId());
+        Product product4 = new Product(UUID.randomUUID(),"Milk",1.33,12,25,UUID.randomUUID());
+
+        StaticConstants.PRODUCT_LIST.add(product1);
+        StaticConstants.PRODUCT_LIST.add(product2);
+        StaticConstants.PRODUCT_LIST.add(product3);
+        StaticConstants.PRODUCT_LIST.add(product4);
+
+    }
 }

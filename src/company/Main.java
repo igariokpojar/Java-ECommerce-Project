@@ -8,13 +8,9 @@ public class Main {
 
         DataGenerator.createCustomer();
         DataGenerator.createCategory();
+        DataGenerator.createProduct();
 
-       // createCustomer();
-       // createCategory();
-       // createProduct();
        // createBalance();
       //  createDiscount();
     }
-
-
 }
