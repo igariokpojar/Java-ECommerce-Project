@@ -1,6 +1,6 @@
 package company;
 
-import category.Category;
+import category.*;
 
 import java.util.*;
 
@@ -14,8 +14,8 @@ public class Main {
         DataGenerator.createCategory();
         DataGenerator.createProduct();
 
-       // createBalance();
-      //  createDiscount();
+        // createBalance();
+        //  createDiscount();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -23,32 +23,41 @@ public class Main {
         System.out.println("Selects Customer");
 
         for (int i = 0; i < StaticConstants.COSTUMER_LIST.size(); i++) {
-            System.out.println("Type: " + i + " for customer:"+StaticConstants.COSTUMER_LIST.get(i).getUserName());
+            System.out.println("Type: " + i + " for customer:" + StaticConstants.COSTUMER_LIST.get(i).getUserName());
 
         }
         Costumer costumer = StaticConstants.COSTUMER_LIST.get(scanner.nextInt());
 
-        while (true){
+        while (true) {
 
             System.out.println("What would you like to do? Just type id for selection");
 
             for (int i = 0; i < prepareMenuOptions().length; i++) {
-                System.out.println(i+"-"+prepareMenuOptions()[i]);
+                System.out.println(i + "-" + prepareMenuOptions()[i]);
 
             }
 
             int menuSelection = scanner.nextInt();
 
-            switch (menuSelection){
+            switch (menuSelection) {
                 case 0:
 
-                for (Category category:StaticConstants.CATEGORY_LIST){
-                    System.out.println("Category Code:" + category.generateCategoryCode() + " category name"+category.getName());
-                }
-
-
+                    for (Category category : StaticConstants.CATEGORY_LIST) {
+                        System.out.println("Category Code:" + category.generateCategoryCode() + " category name" + category.getName());
+                    }
                     break;
+
                 case 1:
+                    try {
+                        for (Product product : StaticConstants.PRODUCT_LIST) {
+
+                            System.out.println("Product Name: " + product.getName() + "Product Category Name: " + product.getCategoryName());
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Product could not be printed because category not found for product name: "
+                                + e.getMessage().split(",")[1]);
+                    }
+
                     break;
                 case 2:
                     break;
@@ -68,17 +77,15 @@ public class Main {
                     break;
 
             }
-
-            prepareMenuOptions();
         }
-
-    }
-
-    private static String[] prepareMenuOptions(){
-        return new String[]{"List Categories","List Products","List Discount","See Balance","Add Balance",
-                "Place an order","See Cart","See order details","See your address","Close App"};
-
     }
 
 
-}
+
+        private static String[] prepareMenuOptions () {
+            return new String[]{"List Categories", "List Products", "List Discount", "See Balance", "Add Balance",
+                    "Place an order", "See Cart", "See order details", "See your address", "Close App"};
+
+        }
+    }
+
