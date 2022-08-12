@@ -1,5 +1,7 @@
 package company;
 
+import category.Category;
+
 import java.util.*;
 
 public class Main {
@@ -40,6 +42,10 @@ public class Main {
             switch (menuSelection){
                 case 0:
 
+                for (Category category:StaticConstants.CATEGORY_LIST){
+                    System.out.println("Category Code:" + category.generateCategoryCode() + " category name"+category.getName());
+                }
+
 
                     break;
                 case 1:
@@ -52,8 +58,6 @@ public class Main {
                     break;
                 case 5:
                     break;
-                case 5:
-                    break;
                 case 6:
                     break;
                 case 7:
@@ -62,6 +66,7 @@ public class Main {
                     break;
                 case 9:
                     break;
+
             }
 
             prepareMenuOptions();
