@@ -25,9 +25,24 @@ public class Main {
 
         }
         Costumer costumer = StaticConstants.COSTUMER_LIST.get(scanner.nextInt());
-        System.out.println(costumer.getUserName());
 
+        while (true){
 
+            System.out.println("What would you like to do? Just type id for selection");
+
+            for (int i = 0; i < prepareMenuOptions().length; i++) {
+                System.out.println(i+"-"+prepareMenuOptions()[i]);
+
+            }
+
+            prepareMenuOptions();
+        }
+
+    }
+
+    private static String[] prepareMenuOptions(){
+        return new String[]{"List Categories","List Products","List Discount","See Balance","Add Balance",
+                "Place an order","See Cart","See order details","See your address","Close App"};
 
     }
 }
