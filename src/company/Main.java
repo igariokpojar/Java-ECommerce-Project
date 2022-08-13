@@ -1,6 +1,7 @@
 package company;
 
 import category.*;
+import discount.Discount;
 
 import java.util.*;
 
@@ -14,8 +15,8 @@ public class Main {
         DataGenerator.createCategory();
         DataGenerator.createProduct();
 
-        // createBalance();
-        //  createDiscount();
+        DataGenerator.createBalance();
+        DataGenerator.createDiscount();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -40,14 +41,14 @@ public class Main {
             int menuSelection = scanner.nextInt();
 
             switch (menuSelection) {
-                case 0:
+                case 0: // list of category
 
                     for (Category category : StaticConstants.CATEGORY_LIST) {
                         System.out.println("Category Code:" + category.generateCategoryCode() + " category name" + category.getName());
                     }
                     break;
 
-                case 1:
+                case 1: //list products // product name, product category name
                     try {
                         for (Product product : StaticConstants.PRODUCT_LIST) {
 
@@ -59,9 +60,16 @@ public class Main {
                     }
 
                     break;
-                case 2:
+                case 2: // list discounts
+
+                    for(Discount discount: StaticConstants.DISCOUNT_LIST){
+                        System.out.println("Discount Name: " + discount.getName() + "discount threshold amount:" + discount.getThresholdAmount());
+                    }
                     break;
                 case 3:
+
+
+
                     break;
                 case 4:
                     break;
@@ -78,9 +86,36 @@ public class Main {
 
             }
         }
+
     }
 
+   /* private static CustomerBalance findCustomerBalance(UUID customerId){
 
+        for (Balance customerBalance : StaticConstants.CUSTOMER_BALACE_LIST){
+            if (customerBalance.getCustomerId().toString().equals(customerId.toString())){
+                return (CustomerBalance) customerBalance;
+            }
+        }
+
+        CustomerBalance customerBalance = new CustomerBalance(customerId,0d);
+        StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance.getId);
+        return customerBalance;
+    }
+    private static GiftCardBalance findGiftCustomerBalance(UUID customerId) {
+
+        for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALACE_LIST) {
+            if (gidtCardBalance.getCustomerId().toString().equals(customerId.toString())) {
+                return (GiftCardBalance) giftCardBalance;
+            }
+        }
+
+        GiftCardBalance giftCardBalance = new GiftCardBalance(customerId, 0d);
+        StaticConstants.GIFT_CARD_BALANCE_LIST.add(giftCardBalance);
+        return giftCardBalance;
+
+    }
+
+*/
 
         private static String[] prepareMenuOptions () {
             return new String[]{"List Categories", "List Products", "List Discount", "See Balance", "Add Balance",
