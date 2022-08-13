@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public abstract class Balance {
 
+    private UUID getId;
     private UUID customerID;
     private double balance;
 
@@ -22,9 +23,7 @@ public abstract class Balance {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public UUID getId() {
+        return getId;
     }
-
-
 }
