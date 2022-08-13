@@ -2,28 +2,27 @@ package balance;
 
 import java.util.UUID;
 
-public abstract class Balance {
+public  abstract class Balance {
 
-    private UUID getId;
-    private UUID customerID;
-    private double balance;
+    private UUID customerId;
+    private Double balance;
 
-    public Balance(UUID customerID, double balance) {
-        this.customerID = customerID;
+    public Balance(UUID customerId, Double balance) {
+        this.customerId = customerId;
         this.balance = balance;
     }
 
     public abstract Double addBalance(Double additionalBalance);
 
-    public UUID getCustomerID() {
-        return customerID;
+    public UUID getCustomerId() {
+        return customerId;
     }
 
-    public double getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public UUID getId() {
-        return getId;
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 }
