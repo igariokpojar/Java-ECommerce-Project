@@ -2,20 +2,18 @@ package balance;
 
 import java.util.UUID;
 
-public class GiftCardBalance {
+public class GiftCardBalance extends Balance {
 
-    public class GiftCardBalance extends Balance{
+    public GiftCardBalance(UUID customerID, double balance) {
+        super(customerID, balance);
+    }
 
-        public GiftCardBalance(UUID customerId, Double balance){
-            super(customerId, balance);
-        }
-
-
-        public Double addBalance(Double additionalBalance) {
-            double promotionAmount = additionalBalance * 10 / 100;
-            setBalance(getBalance() + additionalBalance + promotionAmount);
-            return getBalance();
-        }
+    @Override
+    public Double addBalance(Double additionalBalance) {
+        double promotionAmount = additionalBalance * 10 / 100;
+        setBalance(getBalance() + additionalBalance + promotionAmount);
+        return getBalance();
+    }
 
     }
-}
+
