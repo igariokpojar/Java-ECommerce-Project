@@ -91,7 +91,7 @@ public class Main {
 
    /* private static CustomerBalance findCustomerBalance(UUID customerId){
 
-        for (Balance customerBalance : StaticConstants.CUSTOMER_BALACE_LIST){
+        for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST){
             if (customerBalance.getCustomerId().toString().equals(customerId.toString())){
                 return (CustomerBalance) customerBalance;
             }
@@ -103,7 +103,7 @@ public class Main {
     }
     private static GiftCardBalance findGiftCustomerBalance(UUID customerId) {
 
-        for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALACE_LIST) {
+        for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
             if (gidtCardBalance.getCustomerId().toString().equals(customerId.toString())) {
                 return (GiftCardBalance) giftCardBalance;
             }

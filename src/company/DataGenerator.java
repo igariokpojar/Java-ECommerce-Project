@@ -71,8 +71,8 @@ public class DataGenerator {
 
     public static void createDiscount(){
 
-        Discount amountBaseDiscount = new AmountBasedDiscount(UUID.randomUUID(),"Buy 250 free 50",250.00,50.00);
-        Discount rateBaseDiscount = new RateBaseDiscount(UUID.randomUUID(),"Buy 500 free %15",500.00,10.0);
+        Discount amountBaseDiscount = new AmountBasedDiscount(UUID.randomUUID(),"Buy 250 free 50 ",250.00,50.00);
+        Discount rateBaseDiscount = new RateBaseDiscount(UUID.randomUUID(),"Buy 500 free %15 ",500.00,10.0);
 
         StaticConstants.DISCOUNT_LIST.add(amountBaseDiscount);
         StaticConstants.DISCOUNT_LIST.add(rateBaseDiscount);
