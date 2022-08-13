@@ -4,21 +4,17 @@ import java.util.UUID;
 
 public class CustomerBalance extends Balance {
 
+    public CustomerBalance(UUID customerID, double balance) {
+        super(customerID, balance);
+    }
+
     @Override
     public Double addBalance(Double additionalBalance) {
-        return null;
+        setBalance(getBalance() + additionalBalance);
+        return getBalance();
     }
 
-    public class CustomerBalance extends Balance{
-
-        public CustomerBalance(UUID customerId,Double balance) {
-            super(customerID, balance);
-        }
+    
 
 
-        public Double addBalance(Double additionalBalance){
-            setBalance(getbalance() + additionalBalance);
-            return getBalance();
-        }
-    }
 }

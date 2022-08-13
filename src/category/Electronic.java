@@ -17,7 +17,7 @@ public class Electronic extends Category{
     }
 
     @Override
-    public String generateCategoryCode() {
+    public String generateCategoryCode() { //  We Override  this method Because it is going to be Unique for Electronics
         return "EL-" + getId().toString().substring(0,8);
     }
 }
