@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class GiftCardBalance extends Balance {
 
-    public GiftCardBalance(UUID customerID, double balance) {
+    public GiftCardBalance(UUID customerID, Double balance) {
         super(customerID, balance);
     }
 

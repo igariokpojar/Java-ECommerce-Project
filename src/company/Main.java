@@ -69,11 +69,16 @@ public class Main {
                         System.out.println("Discount Name: " + discount.getName() + "discount threshold amount:" + discount.getThresholdAmount());
                     }
                     break;
+
                 case 3:
 
-                    CustomerBalance customerBalance = findCustomerBalance(costumer.getId());
-                    GiftCardBalance gbalance = findGiftCardBalance(costumer.getId());
+                    CustomerBalance cBalance = findCustomerBalance(costumer.getId());
+                    GiftCardBalance gBalance = findGiftCardBalance(costumer.getId());
 
+                    double totalBalance = cBalance.getBalance() + gBalance.getBalance();
+                    System.out.println("Total Balance: " + totalBalance);
+                    System.out.println("Customer Balance: " + cBalance.getBalance());
+                    System.out.println("Gift Card Balance: " + gBalance.getBalance());
 
                     break;
                 case 4:
@@ -104,27 +109,29 @@ public class Main {
 
         CustomerBalance customerBalance = new CustomerBalance(customerId, 0d);
         StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance);
+
         return customerBalance;
     }
 
     private static GiftCardBalance findGiftCardBalance(UUID customerId) {
 
-        for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
-            if (giftCardBalance.getCustomerId().toString().equals(customerId.toString())) {
-                return (GiftCardBalance) giftCardBalance;
+        for (Balance balance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
+            if (balance.getCustomerId().toString().equals(customerId.toString())) {
+                return (GiftCardBalance) balance;
+
             }
         }
+
         GiftCardBalance giftCardBalance = new GiftCardBalance(customerId, 0d);
         StaticConstants.GIFT_CARD_BALANCE_LIST.add(giftCardBalance);
         return giftCardBalance;
     }
 
 
+    private static String[] prepareMenuOptions() {
+        return new String[]{"List Categories", "List Products", "List Discount", "See Balance", "Add Balance",
+                "Place an order", "See Cart", "See order details", "See your address", "Close App"};
 
-
-        private static String[] prepareMenuOptions () {
-            return new String[]{"List Categories", "List Products", "List Discount", "See Balance", "Add Balance",
-                    "Place an order", "See Cart", "See order details", "See your address", "Close App"};
-
-        }
     }
+}
+
