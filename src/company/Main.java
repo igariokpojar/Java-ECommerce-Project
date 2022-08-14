@@ -1,5 +1,8 @@
 package company;
 
+import balance.Balance;
+import balance.CustomerBalance;
+import balance.GiftCardBalance;
 import category.*;
 import discount.Discount;
 
@@ -62,12 +65,14 @@ public class Main {
                     break;
                 case 2: // list discounts
 
-                    for(Discount discount: StaticConstants.DISCOUNT_LIST){
+                    for (Discount discount : StaticConstants.DISCOUNT_LIST) {
                         System.out.println("Discount Name: " + discount.getName() + "discount threshold amount:" + discount.getThresholdAmount());
                     }
                     break;
                 case 3:
 
+                    CustomerBalance customerBalance = findCustomerBalance(costumer.getId());
+                    GiftCardBalance gbalance = findGiftCardBalance(costumer.getId());
 
 
                     break;
@@ -89,33 +94,33 @@ public class Main {
 
     }
 
-   /* private static CustomerBalance findCustomerBalance(UUID customerId){
+    private static CustomerBalance findCustomerBalance(UUID customerId) {
 
-        for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST){
-            if (customerBalance.getCustomerId().toString().equals(customerId.toString())){
+        for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST) {
+            if (customerBalance.getCustomerId().toString().equals(customerId.toString())) {
                 return (CustomerBalance) customerBalance;
             }
         }
 
-        CustomerBalance customerBalance = new CustomerBalance(customerId,0d);
-        StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance.getId);
+        CustomerBalance customerBalance = new CustomerBalance(customerId, 0d);
+        StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance);
         return customerBalance;
     }
-    private static GiftCardBalance findGiftCustomerBalance(UUID customerId) {
+
+    private static GiftCardBalance findGiftCardBalance(UUID customerId) {
 
         for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
-            if (gidtCardBalance.getCustomerId().toString().equals(customerId.toString())) {
+            if (giftCardBalance.getCustomerId().toString().equals(customerId.toString())) {
                 return (GiftCardBalance) giftCardBalance;
             }
         }
-
         GiftCardBalance giftCardBalance = new GiftCardBalance(customerId, 0d);
         StaticConstants.GIFT_CARD_BALANCE_LIST.add(giftCardBalance);
         return giftCardBalance;
-
     }
 
-*/
+
+
 
         private static String[] prepareMenuOptions () {
             return new String[]{"List Categories", "List Products", "List Discount", "See Balance", "Add Balance",
@@ -123,4 +128,3 @@ public class Main {
 
         }
     }
-
