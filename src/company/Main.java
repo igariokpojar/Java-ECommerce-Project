@@ -82,6 +82,29 @@ public class Main {
 
                     break;
                 case 4:
+
+                CustomerBalance customerBalance =   findCustomerBalance(costumer.getId()); // we create object
+                GiftCardBalance giftCardBalance =  findGiftCardBalance(costumer.getId());
+
+                    System.out.println("Which account would you like to add to?");
+                    System.out.println("Type 1 for Customer balance: "+ customerBalance.getBalance());
+                    System.out.println("Type 2 for Gift Card balance: "+ giftCardBalance.getBalance());
+                    int balanceAccountSelection= scanner.nextInt();
+                    System.out.println("How much do you want to add?");
+                    double additionalAmount=scanner.nextInt();
+
+                    switch (balanceAccountSelection){
+                        case 1:
+                            customerBalance.addBalance(additionalAmount);
+                            System.out.println("New customer balance: " + customerBalance.getBalance());
+                            break;
+                        case 2:
+                            giftCardBalance.addBalance(additionalAmount);
+                            System.out.println("New gift card balance: " + giftCardBalance.getBalance());
+                            break;
+                    }
+
+
                     break;
                 case 5:
                     break;
