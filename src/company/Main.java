@@ -81,7 +81,7 @@ public class Main {
                     System.out.println("Gift Card Balance: " + gBalance.getBalance());
 
                     break;
-                case 4:
+                case 4: // Add Balance
 
                 CustomerBalance customerBalance =   findCustomerBalance(costumer.getId()); // we create object
                 GiftCardBalance giftCardBalance =  findGiftCardBalance(costumer.getId());
