@@ -136,7 +136,7 @@ public class Main {
                         String productId = scanner.next();
 
                         try {
-                            Product product = findProductById(productId);
+                            Product product = findProductById(productId);  // trows an exception if the product is not available
                             if (!putItemToCArtIfStockAvailble(cart,product)){
                                 System.out.println("Stock is insufficient. Please try again");
                                 continue;
