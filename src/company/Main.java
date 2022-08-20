@@ -34,6 +34,8 @@ public class Main {
 
         Costumer costumer = StaticConstants.COSTUMER_LIST.get(scanner.nextInt()); // user login
 
+        Cart cart = new Cart(costumer);
+
 
 
         while (true) { // we use while to keep adding the products
@@ -110,6 +112,27 @@ public class Main {
                     break;
 
                     case 5:
+                        Map<Product,Integer> map = new HashMap<>();
+                        cart.setProductMap(map);
+
+                        while (true){
+                            System.out.println("Which product would you like to add to your cart.To exit: type exit");
+
+                            for (Product product : StaticConstants.PRODUCT_LIST){
+
+                                try {
+                                    System.out.println(
+                                            "id:" + product.getId() + "    price:" + product.getPrice() +
+                                                    "Product name: "+product.getName()+
+                                                    "product category" + product.getCategoryName() +
+                                                    " stock:" + product.getRemainingStock() +
+                                                    " product delivery due:" + product.getDeliveryDueDate());
+                                }catch (Exception e){
+                                    System.out.println(e.getMessage());
+                                }
+                                String productId = scanner.next();
+                            }
+                        }
 
 
 
