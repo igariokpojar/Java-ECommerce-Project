@@ -162,7 +162,18 @@ public class Main {
                         String discountId = scanner.next();
                         if (!discountId.equalsIgnoreCase("no")){
 
-                            Discount discount = findDiscountById(discountId)
+
+                         try {
+                             Discount discount = findDiscountById(discountId);
+
+                             if (discount.decideDiscountIsApplicableToCart(cart)){
+                                 cart.setDiscount(discount.getId());
+                             }
+                         }catch (Exception e){
+                             System.out.println(e.getMessage());
+
+                         }
+
                         }
 
 
