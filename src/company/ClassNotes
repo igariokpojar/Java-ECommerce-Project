@@ -1,0 +1,127 @@
+15th August 2022
+
+
+“The difference between ordinary and extraordinary is that little extra.”
+
+
+
+-----------
+
+Agenda:
+
+- Review : Task, Questions
+
+
+- Lambda Expression : Java 8
+
+Java - > OOP
+
+Lambda :
+	 - Enable Functional Programming
+	 - Readable code
+
+In Java, everything is object.You can not have some individual actions alone.
+If you want an action, you need to write a class then create object from that and call it.
+
+-----
+
+Lambda  : are just functions. They do not belong to any class. These functions can assume as values
+
+	String name  = "Ozzy";
+	int x = 5;
+
+
+	..... abc = public void sort(){
+	         System.out.print("hello worl");
+	      }
+
+	      abc = () -> {System.out.print("hello worl");}
+
+	      public - when we need -  NO NEED IT
+
+	      sort - method name - NO NEED IT
+
+	      return type - Compiler canfigure out by looking at the code
+
+
+	      If it is one line ;
+
+	      abc = () -> System.out.print("hello worl");
+
+
+sorting(abc);
+
+sorting(() -> System.out.print("hello worl"););
+
+Function that takes arguments:
+
+	public boolean test(Apple apple){
+	   return apple.getWeight()>200;
+	}
+
+	... weightApple = (Apple apple) - > apple.getWeight()>200;
+
+	... lengthCount = (String s) -> s.length;
+
+	myFunction = (int x,int y) -> {
+	     System.out.println("Result");
+	     System.out.println("x+y");
+	}
+
+	myLambda = () -> 42
+
+
+Creating Lambda
+
+Step-1 : Create a new interface . If you have already interface, this is optional
+
+    interface MyLambda{}
+
+Step-2 : Create a method, exact same signature with lambda expression
+
+	interface MyLambda{
+	   void print();
+	}
+
+
+	MyLambda abc = () -> System.out.println("Ozzy");
+
+Type Inference
+
+StringLengthLambda myLambda = (s) -> s.lenght;
+
+StringLengthLambda myLambda = s -> s.lenght;
+
+StringLengthLambda myLambda = (x,y) -> x+y;
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------
+
+Before Lambda
+
+Interface
+
+Class implementing interfase
+
+create method accepting different behav (poly)
+
+
+After
+
+Interface (if u can use any ready functional interface from java, u do not to create this one)
+
+create method, pass the lambda function - FUNCTIONAL PROGRAMMING
+
+
+sort(PASS LAMBDA)

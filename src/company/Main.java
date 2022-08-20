@@ -26,13 +26,17 @@ public class Main {
 
         System.out.println("Selects Customer");
 
+        // Pick up costumer from the Data base
+
         for (int i = 0; i < StaticConstants.COSTUMER_LIST.size(); i++) {
             System.out.println("Type: " + i + " for customer:" + StaticConstants.COSTUMER_LIST.get(i).getUserName());
-
         }
-        Costumer costumer = StaticConstants.COSTUMER_LIST.get(scanner.nextInt());
 
-        while (true) {
+        Costumer costumer = StaticConstants.COSTUMER_LIST.get(scanner.nextInt()); // user login
+
+
+
+        while (true) { // we use while to keep adding the products
 
             System.out.println("What would you like to do? Just type id for selection");
 
@@ -93,7 +97,7 @@ public class Main {
                     System.out.println("How much do you want to add?");
                     double additionalAmount=scanner.nextInt();
 
-                    switch (balanceAccountSelection){
+                    switch (balanceAccountSelection){ //
                         case 1:
                             customerBalance.addBalance(additionalAmount);
                             System.out.println("New customer balance: " + customerBalance.getBalance());
@@ -103,10 +107,13 @@ public class Main {
                             System.out.println("New gift card balance: " + giftCardBalance.getBalance());
                             break;
                     }
-
-
                     break;
-                case 5:
+
+                    case 5:
+
+
+
+
                     break;
                 case 6:
                     break;
