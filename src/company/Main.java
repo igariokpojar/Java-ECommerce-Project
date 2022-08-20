@@ -174,12 +174,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int count = scanner.nextInt();
 
-        Integer cartCount  = cart.getProductMap().get(product);
+        Integer cartCount  = cart.getProductMap().get(product); //checking the cart
         if (cartCount!=null && product.getRemainingStock()>cartCount+count){
             cart.getProductMap().put(product,cartCount+count);
             return true;
 
-        } else if (product.getRemainingStock()>=count) {
+        } else if (product.getRemainingStock()>=count) { // if there is not enough stock
             cart.getProductMap().put(product,count);
             return true;
 
