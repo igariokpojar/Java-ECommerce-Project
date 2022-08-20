@@ -146,6 +146,12 @@ public class Main {
                             continue;
                         }
 
+                        System.out.println("Do you want to add any more product.Type Y for adding more, N for exiting");
+                        String decision = scanner.next();
+                        if (!decision.equals("Y")){
+                            break;
+                        }
+
 
                         break;
                         case 6:
