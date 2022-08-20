@@ -5,6 +5,7 @@ import balance.CustomerBalance;
 import balance.GiftCardBalance;
 import category.*;
 import discount.Discount;
+import static company.StaticConstants.DISCOUNT_LIST;
 
 import java.util.*;
 
@@ -152,6 +153,18 @@ public class Main {
                             break;
                         }
 
+                        System.out.println("Seems like there are discount option.Do you want to see and apply to your cart if it is applicable ." +
+                                "For No Discount type : no");
+
+                        for (Discount discount : StaticConstants. DISCOUNT_LIST){
+                            System.out.println("Discount id " + discount.getId()+" discount name:"+ discount.getName());
+                        }
+                        String discountId = scanner.next();
+                        if (!discountId.equalsIgnoreCase("no")){
+
+                            Discount discount = findDiscountById(discountId)
+                        }
+
 
                         break;
                         case 6:
@@ -167,7 +180,19 @@ public class Main {
             }
 
         }
+
     }
+    private static Discount findDiscountById(String discountId) throws Exception{
+        for (Discount discount : DISCOUNT_LIST){
+            if (discount.getId().equals(discount)){
+                return discount;
+            }
+        }
+        throw new Exception("Discount could;t be applied because not found");
+    }
+
+
+
 
     private static boolean putItemToCArtIfStockAvailble(Cart cart, Product product){
         System.out.println("Please provide count");
