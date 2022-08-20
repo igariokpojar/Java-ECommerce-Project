@@ -37,7 +37,6 @@ public class Main {
         Cart cart = new Cart(costumer);
 
 
-
         while (true) { // we use while to keep adding the products
 
             System.out.println("What would you like to do? Just type id for selection");
@@ -89,17 +88,17 @@ public class Main {
                     break;
                 case 4: // Add Balance
 
-                CustomerBalance customerBalance =   findCustomerBalance(costumer.getId()); // we create object
-                GiftCardBalance giftCardBalance =  findGiftCardBalance(costumer.getId());
+                    CustomerBalance customerBalance = findCustomerBalance(costumer.getId()); // we create object
+                    GiftCardBalance giftCardBalance = findGiftCardBalance(costumer.getId());
 
                     System.out.println("Which account would you like to add to?");
-                    System.out.println("Type 1 for Customer balance: "+ customerBalance.getBalance());
-                    System.out.println("Type 2 for Gift Card balance: "+ giftCardBalance.getBalance());
-                    int balanceAccountSelection= scanner.nextInt();
+                    System.out.println("Type 1 for Customer balance: " + customerBalance.getBalance());
+                    System.out.println("Type 2 for Gift Card balance: " + giftCardBalance.getBalance());
+                    int balanceAccountSelection = scanner.nextInt();
                     System.out.println("How much do you want to add?");
-                    double additionalAmount=scanner.nextInt();
+                    double additionalAmount = scanner.nextInt();
 
-                    switch (balanceAccountSelection){ //
+                    switch (balanceAccountSelection) { //
                         case 1:
                             customerBalance.addBalance(additionalAmount);
                             System.out.println("New customer balance: " + customerBalance.getBalance());
@@ -111,45 +110,85 @@ public class Main {
                     }
                     break;
 
-                    case 5:
-                        Map<Product,Integer> map = new HashMap<>();
-                        cart.setProductMap(map);
+                case 5:
+                    Map<Product, Integer> map = new HashMap<>();
+                    cart.setProductMap(map);
 
-                        while (true){
-                            System.out.println("Which product would you like to add to your cart.To exit: type exit");
+                    while (true) {
+                        System.out.println("Which product would you like to add to your cart.To exit: type exit");
 
-                            for (Product product : StaticConstants.PRODUCT_LIST){
+                        for (Product product : StaticConstants.PRODUCT_LIST) {
 
-                                try {
-                                    System.out.println(
-                                            "id:" + product.getId() + "    price:" + product.getPrice() +
-                                                    "Product name: "+product.getName()+
-                                                    "product category" + product.getCategoryName() +
-                                                    " stock:" + product.getRemainingStock() +
-                                                    " product delivery due:" + product.getDeliveryDueDate());
-                                }catch (Exception e){
-                                    System.out.println(e.getMessage());
-                                }
-                                String productId = scanner.next();
+                            try {
+                                System.out.println(
+                                        "id:" + product.getId() + "    price:" + product.getPrice() +
+                                                "Product name: " + product.getName() +
+                                                "product category" + product.getCategoryName() +
+                                                " stock:" + product.getRemainingStock() +
+                                                " product delivery due:" + product.getDeliveryDueDate());
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+
                             }
+
+                        }
+                        String productId = scanner.next();
+
+                        try {
+                            Product product = findProductById(productId);
+                            if (!putItemToCArtIfStockAvailble(cart,product)){
+                                System.out.println("Stock is insufficient. Please try again");
+                                continue;
+                            }
+
+                        }catch (Exception e){
+                            System.out.println("Product does not exist.Please try again");
+                            continue;
                         }
 
 
+                        break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
 
+                    }
+            }
 
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
+        }
+    }
 
+    private static boolean putItemToCArtIfStockAvailble(Cart cart, Product product){
+        System.out.println("Please provide count");
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+
+        Integer cartCount  = cart.getProductMap().get(product);
+        if (cartCount!=null && product.getRemainingStock()>cartCount+count){
+            cart.getProductMap().put(product,cartCount+count);
+            return true;
+
+        } else if (product.getRemainingStock()>=count) {
+            cart.getProductMap().put(product,count);
+            return true;
+
+        }
+        return false;
+    }
+
+    private static Product findProductById(String productId) throws Exception{
+        for (Product product : StaticConstants.PRODUCT_LIST){
+            if (product.getId().toString().equals(productId)) {
+
+                return product;
             }
         }
-
+        throw new Exception("Product not found");
     }
 
     private static CustomerBalance findCustomerBalance(UUID customerId) {
