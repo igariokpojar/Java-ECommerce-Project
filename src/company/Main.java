@@ -1,10 +1,10 @@
 package company;
 
-import balance.Balance;
-import balance.CustomerBalance;
-import balance.GiftCardBalance;
-import category.*;
-import discount.Discount;
+import company.balance.Balance;
+import company.balance.CustomerBalance;
+import company.balance.GiftCardBalance;
+import company.category.*;
+import company.discount.Discount;
 import static company.StaticConstants.DISCOUNT_LIST;
 
 import java.util.*;
@@ -50,21 +50,21 @@ public class Main {
             int menuSelection = scanner.nextInt();
 
             switch (menuSelection) {
-                case 0: // list of category
+                case 0: // list of company.category
 
                     for (Category category : StaticConstants.CATEGORY_LIST) {
-                        System.out.println("Category Code:" + category.generateCategoryCode() + " category name" + category.getName());
+                        System.out.println("Category Code:" + category.generateCategoryCode() + " company.category name" + category.getName());
                     }
                     break;
 
-                case 1: //list products // product name, product category name
+                case 1: //list products // product name, product company.category name
                     try {
                         for (Product product : StaticConstants.PRODUCT_LIST) {
 
                             System.out.println("Product Name: " + product.getName() + "Product Category Name: " + product.getCategoryName());
                         }
                     } catch (Exception e) {
-                        System.out.println("Product could not be printed because category not found for product name: "
+                        System.out.println("Product could not be printed because company.category not found for product name: "
                                 + e.getMessage().split(",")[1]);
                     }
 
@@ -72,7 +72,7 @@ public class Main {
                 case 2: // list discounts
 
                     for (Discount discount : StaticConstants.DISCOUNT_LIST) {
-                        System.out.println("Discount Name: " + discount.getName() + "discount threshold amount:" + discount.getThresholdAmount());
+                        System.out.println("Discount Name: " + discount.getName() + "company.discount threshold amount:" + discount.getThresholdAmount());
                     }
                     break;
 
@@ -93,8 +93,8 @@ public class Main {
                     GiftCardBalance giftCardBalance = findGiftCardBalance(costumer.getId());
 
                     System.out.println("Which account would you like to add to?");
-                    System.out.println("Type 1 for Customer balance: " + customerBalance.getBalance());
-                    System.out.println("Type 2 for Gift Card balance: " + giftCardBalance.getBalance());
+                    System.out.println("Type 1 for Customer company.balance: " + customerBalance.getBalance());
+                    System.out.println("Type 2 for Gift Card company.balance: " + giftCardBalance.getBalance());
                     int balanceAccountSelection = scanner.nextInt();
                     System.out.println("How much do you want to add?");
                     double additionalAmount = scanner.nextInt();
@@ -102,11 +102,11 @@ public class Main {
                     switch (balanceAccountSelection) { //
                         case 1:
                             customerBalance.addBalance(additionalAmount);
-                            System.out.println("New customer balance: " + customerBalance.getBalance());
+                            System.out.println("New customer company.balance: " + customerBalance.getBalance());
                             break;
                         case 2:
                             giftCardBalance.addBalance(additionalAmount);
-                            System.out.println("New gift card balance: " + giftCardBalance.getBalance());
+                            System.out.println("New gift card company.balance: " + giftCardBalance.getBalance());
                             break;
                     }
                     break;
@@ -124,7 +124,7 @@ public class Main {
                                 System.out.println(
                                         "id:" + product.getId() + "    price:" + product.getPrice() +
                                                 "Product name: " + product.getName() +
-                                                "product category" + product.getCategoryName() +
+                                                "product company.category" + product.getCategoryName() +
                                                 " stock:" + product.getRemainingStock() +
                                                 " product delivery due:" + product.getDeliveryDueDate());
                             } catch (Exception e) {
@@ -137,44 +137,46 @@ public class Main {
 
                         try {
                             Product product = findProductById(productId);  // trows an exception if the product is not available
-                            if (!putItemToCArtIfStockAvailble(cart,product)){
+                            if (!putItemToCArtIfStockAvailble(cart, product)) {
                                 System.out.println("Stock is insufficient. Please try again");
                                 continue;
                             }
 
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             System.out.println("Product does not exist.Please try again");
                             continue;
                         }
 
                         System.out.println("Do you want to add any more product.Type Y for adding more, N for exiting");
                         String decision = scanner.next();
-                        if (!decision.equals("Y")){
+                        if (!decision.equals("Y")) {
                             break;
                         }
+                    }
 
-                        System.out.println("Seems like there are discount option.Do you want to see and apply to your cart if it is applicable ." +
+                        System.out.println("Seems like there are company.discount option.Do you want to see and apply to your cart if it is applicable ." +
                                 "For No Discount type : no");
 
-                        for (Discount discount : StaticConstants. DISCOUNT_LIST){
-                            System.out.println("Discount id " + discount.getId()+" discount name:"+ discount.getName());
+                        for (Discount discount : StaticConstants.DISCOUNT_LIST) {
+                            System.out.println("Discount id " + discount.getId() + " company.discount name:" + discount.getName());
                         }
                         String discountId = scanner.next();
-                        if (!discountId.equalsIgnoreCase("no")){
+                        if (!discountId.equalsIgnoreCase("no")) {
 
 
-                         try {
-                             Discount discount = findDiscountById(discountId);
+                            try {
+                                Discount discount = findDiscountById(discountId);
 
-                             if (discount.decideDiscountIsApplicableToCart(cart)){
-                                 cart.setDiscount(discount.getId());
-                             }
-                         }catch (Exception e){
-                             System.out.println(e.getMessage());
+                                if (discount.decideDiscountIsApplicableToCart(cart)) {
+                                    cart.setDiscount(discount.getId());
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
 
-                         }
+                            }
 
                         }
+
 
 
                         break;
@@ -192,7 +194,7 @@ public class Main {
 
         }
 
-    }
+
     private static Discount findDiscountById(String discountId) throws Exception{
         for (Discount discount : DISCOUNT_LIST){
             if (discount.getId().equals(discount)){

@@ -1,15 +1,15 @@
 package company;
 
-import balance.Balance;
-import balance.CustomerBalance;
-import balance.GiftCardBalance;
-import category.Category;
-import category.Electronic;
-import category.Furniture;
-import category.SkinCare;
-import discount.AmountBasedDiscount;
-import discount.Discount;
-import discount.RateBaseDiscount;
+import company.balance.Balance;
+import company.balance.CustomerBalance;
+import company.balance.GiftCardBalance;
+import company.category.Category;
+import company.category.Electronic;
+import company.category.Furniture;
+import company.category.SkinCare;
+import company.discount.AmountBasedDiscount;
+import company.discount.Discount;
+import company.discount.RateBaseDiscount;
 
 import java.util.ArrayList;
 import java.util.List;

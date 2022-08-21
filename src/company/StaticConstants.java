@@ -1,8 +1,8 @@
 package company;
 
-import balance.Balance;
-import category.Category;
-import discount.Discount;
+import company.balance.Balance;
+import company.category.Category;
+import company.discount.Discount;
 
 import java.util.ArrayList;
 import java.util.List;

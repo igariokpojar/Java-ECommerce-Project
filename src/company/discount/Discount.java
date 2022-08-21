@@ -1,4 +1,4 @@
-package discount;
+package company.discount;
 
 import company.Cart;
 

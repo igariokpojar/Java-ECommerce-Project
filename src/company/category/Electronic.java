@@ -1,4 +1,4 @@
-package category;
+package company.category;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

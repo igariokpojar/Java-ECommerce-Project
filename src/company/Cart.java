@@ -34,7 +34,7 @@ public class Cart {
         this.customer = customer;
     }
 
-    public UUID getDiscount() {
+    public UUID getDiscountId() {
         return discount;
     }
 

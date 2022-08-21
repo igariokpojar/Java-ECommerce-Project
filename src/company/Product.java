@@ -1,6 +1,6 @@
 package company;
 
-import category.Category;
+import company.category.Category;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
