@@ -5,6 +5,10 @@ import company.balance.CustomerBalance;
 import company.balance.GiftCardBalance;
 import company.category.*;
 import company.discount.Discount;
+import company.order.Order;
+import company.order.OrderService;
+import company.order.OrderServiceImpl;
+
 import static company.StaticConstants.DISCOUNT_LIST;
 
 import java.util.*;
@@ -176,6 +180,16 @@ public class Main {
                             }
 
                         }
+                        OrderService orderService = new OrderServiceImpl(); // create new Order service Object
+                        String result = orderService.placeOrder(cart);
+
+                        if (result.equals("Order has been placed successfully")){
+                            System.out.println("Order is successful");
+                            updateProductStock(cart.getProductMap());
+                            cart.setDiscount(null);
+                        } else {
+                            System.out.println(result);
+                        }
 
 
 
@@ -193,6 +207,11 @@ public class Main {
             }
 
         }
+        private static void updateProductStock(Map<Product,Integer>map){
+        for (Product product : map.keySet()){
+            product.setRemainingStock(product.getRemainingStock()-map.get(product));
+        }
+    }
 
 
     private static Discount findDiscountById(String discountId) throws Exception{
