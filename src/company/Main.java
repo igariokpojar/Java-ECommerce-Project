@@ -214,6 +214,8 @@ public class Main {
 
                             break;
                         case 9:
+
+                            System.exit(1);
                             break;
 
                     }
