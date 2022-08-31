@@ -209,6 +209,9 @@ public class Main {
 
                             break;
                         case 8:
+
+                            printAddressByCustomerId(costumer);
+
                             break;
                         case 9:
                             break;
@@ -217,6 +220,15 @@ public class Main {
             }
 
         }
+
+    private static void printAddressByCustomerId(Costumer costumer) {
+        for (Address address : costumer.getAddress()){
+            System.out.println(" Street name: " + address.getStreetName()+
+                    "Street number: " + address.getStreetNumber() +
+                    " Zipcode: " + address.getZipCode() + "State : " + address.getState());
+        }
+
+    }
 
     private static void printOrdersByCustomerId(UUID customerId) {
         for (Order order : ORDER_LIST){
