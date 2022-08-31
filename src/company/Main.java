@@ -10,6 +10,7 @@ import company.order.OrderService;
 import company.order.OrderServiceImpl;
 
 import static company.StaticConstants.DISCOUNT_LIST;
+import static company.StaticConstants.ORDER_LIST;
 
 import java.util.*;
 
@@ -190,13 +191,22 @@ public class Main {
                         } else {
                             System.out.println(result);
                         }
-
-
-
                         break;
+
                         case 6:
+                            System.out.println("Your Cart");
+                            if (!cart.getProductMap().keySet().isEmpty()){
+                                for (Product product : cart.getProductMap().keySet()){
+                                    System.out.println("product name: " + product.getName()
+                                            +" count " + cart.getProductMap().get(product));
+                                }
+                            }else {
+                                System.out.println("your cat is empty");
+                            }
                             break;
                         case 7:
+                            printOrdersByCustomerId(costumer.getId());
+
                             break;
                         case 8:
                             break;
@@ -207,7 +217,20 @@ public class Main {
             }
 
         }
-        private static void updateProductStock(Map<Product,Integer>map){
+
+    private static void printOrdersByCustomerId(UUID customerId) {
+        for (Order order : ORDER_LIST){
+            if (order.getCustomerId().toString().equals(customerId.toString())){
+                System.out.println("Order status: "+order.getOrderStatus() +
+                " Order amount " + order.getCartTotalAmount()+ " order date "+order.getOrderDate());
+            }
+        }
+        if (ORDER_LIST.size()==0){
+            System.out.println("No order has been placed");
+        }
+    }
+
+    private static void updateProductStock(Map<Product,Integer>map){
         for (Product product : map.keySet()){
             product.setRemainingStock(product.getRemainingStock()-map.get(product));
         }
